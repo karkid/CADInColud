@@ -9,7 +9,7 @@
     "watch": "webpack --watch",
     "dev": "webpack-dev-server --mode=development",
     "doc": "esdoc",
-    "test": "babel ./lib -d ./build"
+    "build:test": "babel ./lib -d ./test_build"
   },
   "repository": {
     "type": "git",
