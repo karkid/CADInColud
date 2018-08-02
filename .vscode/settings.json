@@ -1,0 +1,18 @@
+{
+    "git.ignoreLimitWarning": false,
+    "search.exclude": {
+        "**/node_modules": false
+    },
+    "jshint.options": {
+        "esversion": 6
+    },
+    // The number of spaces a tab is equal to.
+    "editor.tabSize": 4,
+    // Insert spaces when pressing Tab.
+    "editor.insertSpaces": true,
+    // When opening a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
+    "editor.detectIndentation": true,
+    "editor.renderWhitespace": "all",
+    // Only if you want auto fomattting on saving the file
+    "editor.formatOnSave": true,
+}
