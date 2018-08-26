@@ -1,12 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 
 <head>
-    <title>CAD In Cloud</title>
+    <title>3DRander Engine</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- <script src="../lib_build/parsers/DXFParser.js"></script> -->
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+
+    <!-- Three.js version r89 -->
+    <script src="../node_modules/three/build/three.min.js"></script>
+    <!-- Three.js extras -->
+    <script src="../lib/engine/OrbitControls.js"></script>
+
+    <script src="../lib/engine/three-dxf.js"></script>
 </head>
 
 <body>
+    <div class="container">
+        <div role="form">
+            <div class="form-group">
+                <label for="exampleInputFile">Choose a DXF file</label>
+                <input type="file" accept=".dxf" id="dxf" name="file">
+                <div class="progress progress-striped" style="width: 300px;">
+                    <div id="file-progress-bar" class="progress-bar progress-bar-success" role="progressbar" style="width: 0">
+                    </div>
+                </div>
+                <div id="file-description" class="help-block"></div>
+            </div>
+
+            <p>While hovering over the canvas: Right click to pan. Mouse wheel to zoom in an out.</p>
+        </div>
+        <div id="cad-view">
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 
 </html>

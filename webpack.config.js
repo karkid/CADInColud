@@ -15,20 +15,27 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'index.html'
         }),
-        new CopyWebpackPlugin([
-            { from: './css/', to: '../dist/css/' },
-            { from: './assets/media/', to: '../dist/assets/media/' }
+        new CopyWebpackPlugin([{
+                from: './css/',
+                to: '../dist/css/'
+            },
+            {
+                from: './assets/media/',
+                to: '../dist/assets/media/'
+            },
+            {
+                from: './assets/fonts/',
+                to: '../dist/assets/fonts/'
+            }
         ]),
     ],
     module: {
-        rules: [
-            {
-                test: /\.js$/,
-                include: /src/,
-                exclude: /node_modules/,
-                loader: "babel-loader",
-            }
-        ]
+        rules: [{
+            test: /\.js$/,
+            include: /src/,
+            exclude: /node_modules/,
+            loader: "babel-loader",
+        }]
     },
     devServer: {
         contentBase: path.resolve(__dirname, './dist/assets/media'),
