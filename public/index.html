@@ -18,25 +18,28 @@
 </head>
 
 <body>
-    <div class="container">
-        <div role="form">
+    <div class="main">
+        <div class="nav-bar">
+            <div class="nav-btn">
+                <div class="icon" id="open" name="file" style="background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiAgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiPiAgIDxwYXRoIGZpbGw9IiMwMDAiIGQ9Ik0xNCwxNEgxOS41TDE0LDE5LjVNMjEsNUEyLDIgMCAwLDAgMTksM0g1QTIsMiAwIDAsMCAzLDVWMTlBMiwyIDAgMCwwIDUsMjFIMTVMMjEsMTVWNVoiIC8+PC9zdmc+ ')">
+                </div>
+            </div>
+        </div>
+        <div role="form" style="display:none">
             <div class="form-group">
                 <label for="exampleInputFile">Choose a DXF file</label>
                 <input type="file" accept=".dxf" id="dxf" name="file">
-                <div class="progress progress-striped" style="width: 300px;">
-                    <div id="file-progress-bar" class="progress-bar progress-bar-success" role="progressbar" style="width: 0">
-                    </div>
-                </div>
-                <div id="file-description" class="help-block"></div>
             </div>
-
+            <div id="file-description" class="help-block"></div>
             <p>While hovering over the canvas: Right click to pan. Mouse wheel to zoom in an out.</p>
         </div>
+        <div class="progress progress-striped" style="width: 300px;">
+            <div id="file-progress-bar" class="progress-bar progress-bar-success" role="progressbar" style="width: 0">
+            </div>
+        </div>
         <div id="cad-view">
-
         </div>
     </div>
-
     <script src="app.js"></script>
 </body>
 

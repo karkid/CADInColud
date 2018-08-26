@@ -2,6 +2,10 @@ var DXFParser = require('../lib_build/parsers/DXFParser');
 var progress = document.getElementById('file-progress-bar');
 var $progress = $('.progress');
 
+document.getElementById('open').onclick = function () {
+    document.getElementById('dxf').click();
+};
+
 var $cadview = $('#cad-view');
 var cadCanvas;
 
@@ -19,11 +23,11 @@ function onFileSelected(evt) {
 
     var file = evt.target.files[0];
     var output = [];
-    output.push('<li><strong>', encodeURI(file.name), '</strong> (', file.type || 'n/a', ') - ',
-        file.size, ' bytes, last modified: ',
-        file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() : 'n/a',
-        '</li>');
-    document.getElementById('file-description').innerHTML = '<ul>' + output.join('') + '</ul>';
+    // output.push('<li><strong>', encodeURI(file.name), '</strong> (', file.type || 'n/a', ') - ',
+    //     file.size, ' bytes, last modified: ',
+    //     file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() : 'n/a',
+    //     '</li>');
+    document.getElementById('file-description').innerHTML = '<ul>' + encodeURI(file.name) + '</ul>';
 
     $progress.addClass('loading');
 
@@ -84,7 +88,7 @@ function onSuccess(evt) {
     var loader = new THREE.FontLoader();
     loader.load('./assets/fonts/helvetiker_regular.typeface.json', function (response) {
         font = response;
-        cadCanvas = new ThreeDxf.Viewer(dxf, document.getElementById('cad-view'), 400, 400, font);
+        cadCanvas = new ThreeDxf.Viewer(dxf, document.getElementById('cad-view'), $('body').width(), $('body').height(), font);
     });
 
 }
