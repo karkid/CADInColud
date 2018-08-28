@@ -97,9 +97,32 @@ body {
     background-color: rgb(204, 204, 204);
 }
 
-.center, .centervertical {
-    top: 50%;
+.center {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
+}
+
+.centerhorizontal {
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0)
+}
+
+.centervertical {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%)
 }
 
 .vertical-tool-bar {
@@ -111,7 +134,7 @@ body {
     display: block;
 }
 
-.vertical-tool-bar > .option {
+.vertical-tool-bar>.option {
     z-index: 1000;
     display: block;
     width: 36px;
@@ -122,5 +145,5 @@ body {
     background-color: rgb(204, 204, 204);
     opacity: 0.5;
     cursor: pointer;
-    border-radius: 6px 0px 0px;
+    margin-bottom: 6px;
 }
