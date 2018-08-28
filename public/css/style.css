@@ -32,8 +32,6 @@ body {
 }
 
 .progress {
-    position: absolute;
-    top: 50%;
     left: calc(50% - 250px);
     z-index: 1000;
     opacity: 0;
@@ -61,7 +59,14 @@ body {
     display: inline-block;
     width: 64px;
     height: 64px;
+}
+
+.nav-right {
     right: 0;
+}
+
+.nav-left {
+    left: 0;
 }
 
 .icon {
@@ -85,8 +90,37 @@ body {
     user-drag: none;
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
 }
 
 .icon:hover {
     background-color: rgb(204, 204, 204);
+}
+
+.center, .centervertical {
+    top: 50%;
+    position: absolute;
+}
+
+.vertical-tool-bar {
+    z-index: 1000;
+    right: 0px;
+    width: 45px;
+    height: auto;
+    border-radius: 6px 0px 0px 6px;
+    display: block;
+}
+
+.vertical-tool-bar > .option {
+    z-index: 1000;
+    display: block;
+    width: 36px;
+    height: 36px;
+    right: 0px;
+    top: 0px;
+    padding: 6px;
+    background-color: rgb(204, 204, 204);
+    opacity: 0.5;
+    cursor: pointer;
+    border-radius: 6px 0px 0px;
 }

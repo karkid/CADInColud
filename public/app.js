@@ -2,10 +2,6 @@ var DXFParser = require('../lib_build/parsers/DXFParser');
 var progress = document.getElementById('file-progress-bar');
 var $progress = $('.progress');
 
-document.getElementById('open').onclick = function () {
-    document.getElementById('dxf').click();
-};
-
 var $cadview = $('#cad-view');
 var cadCanvas;
 
@@ -22,12 +18,9 @@ function onFileSelected(evt) {
     progress.textContent = '0%';
 
     var file = evt.target.files[0];
-    var output = [];
-    // output.push('<li><strong>', encodeURI(file.name), '</strong> (', file.type || 'n/a', ') - ',
-    //     file.size, ' bytes, last modified: ',
-    //     file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() : 'n/a',
-    //     '</li>');
-    document.getElementById('file-description').innerHTML = '<ul>' + encodeURI(file.name) + '</ul>';
+    document.getElementById('fileInfo').setAttribute("data-content", '<div> <b>File Name :</b> ' + file.name + '</div><br>' +
+        '<div><b>Size :</b> ' + file.size + ' bytes</div><br>' +
+        '<div><b>Last modified : </b>' + file.lastModifiedDate.toLocaleDateString() + '</div>');
 
     $progress.addClass('loading');
 
@@ -98,3 +91,24 @@ function handleDragOver(evt) {
     evt.preventDefault();
     evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
 }
+// Newly Added
+window.onresize = () => {
+    cadCanvas.resize($('body').width(), $('body').height());
+}
+
+$('[data-toggle="popover"]').popover({ html: true });
+document.getElementById('open').onclick = function () {
+    document.getElementById('dxf').click();
+};
+
+document.getElementById('zoom_in').onclick = function () {
+
+};
+document.getElementById('zoom_out').onclick = function () {
+
+};
+document.getElementById('zoom_reset').onclick = function () {
+
+};
+document.getElementById('pan_home').onclick = function () {
+};

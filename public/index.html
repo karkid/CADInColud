@@ -4,10 +4,11 @@
 <head>
     <title>3DRander Engine</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- <script src="../lib_build/parsers/DXFParser.js"></script> -->
     <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Three.js version r89 -->
     <script src="../node_modules/three/build/three.min.js"></script>
@@ -20,11 +21,16 @@
 <body>
     <div class="main">
         <div class="nav-bar">
-            <div class="nav-btn">
+            <div class="nav-btn nav-right">
                 <div class="icon" id="open" name="file" style="background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiAgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiPiAgIDxwYXRoIGZpbGw9IiMwMDAiIGQ9Ik0xNCwxNEgxOS41TDE0LDE5LjVNMjEsNUEyLDIgMCAwLDAgMTksM0g1QTIsMiAwIDAsMCAzLDVWMTlBMiwyIDAgMCwwIDUsMjFIMTVMMjEsMTVWNVoiIC8+PC9zdmc+ ')">
                 </div>
             </div>
+            <div class="nav-btn nav-left">
+                <div class="icon" id="fileInfo" name="file" data-trigger="hover" data-toggle="popover" data-content="No file loaded" style="background-image: url('./assets/media/info.svg')">
+                </div>
+            </div>
         </div>
+
         <div role="form" style="display:none">
             <div class="form-group">
                 <label for="exampleInputFile">Choose a DXF file</label>
@@ -33,11 +39,20 @@
             <div id="file-description" class="help-block"></div>
             <p>While hovering over the canvas: Right click to pan. Mouse wheel to zoom in an out.</p>
         </div>
-        <div class="progress progress-striped" style="width: 300px;">
+
+        <div class="progress progress-striped center" style="width: 300px;">
             <div id="file-progress-bar" class="progress-bar progress-bar-success" role="progressbar" style="width: 0">
             </div>
         </div>
+
         <div id="cad-view">
+        </div>
+
+        <div id="vertical-tool-bar" class="vertical-tool-bar centervertical">
+            <div id="zoom_in" class="option icon" style="background-image: url('./assets/media/zoom_in.svg')"></div>
+            <div id="pan_home" class="option icon" style="background-image: url('./assets/media/pan_home.svg')"></div>
+            <div id="zoom_reset" class="option icon" style="background-image: url('./assets/media/zoom_reset.svg')"></div>
+            <div id="zoom_out" class="option icon" style="background-image: url('./assets/media/zoom_out.svg')"></div>
         </div>
     </div>
     <script src="app.js"></script>
