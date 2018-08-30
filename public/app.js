@@ -1,4 +1,5 @@
 var DXFParser = require('../lib_build/parsers/DXFParser');
+var Viewer = require('../lib_build/engine/viewer/DXFViewer');
 var progress = document.getElementById('file-progress-bar');
 var $progress = $('.progress');
 
@@ -81,7 +82,7 @@ function onSuccess(evt) {
     var loader = new THREE.FontLoader();
     loader.load('./assets/fonts/helvetiker_regular.typeface.json', function (response) {
         font = response;
-        cadCanvas = new ThreeDxf.Viewer(dxf, document.getElementById('cad-view'), $('body').width(), $('body').height(), font);
+        cadCanvas = new Viewer.default(dxf, document.getElementById('cad-view'), $('body').width(), $('body').height(), font);
     });
 
 }
@@ -93,7 +94,8 @@ function handleDragOver(evt) {
 }
 // Newly Added
 window.onresize = () => {
-    cadCanvas.resize($('body').width(), $('body').height());
+    if (cadCanvas)
+        cadCanvas.resize($('body').width(), $('body').height());
 }
 
 $('[data-toggle="popover"]').popover({ html: true });
