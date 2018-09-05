@@ -103,14 +103,39 @@ document.getElementById('open').onclick = function () {
     document.getElementById('dxf').click();
 };
 
-document.getElementById('zoom_in').onclick = function () {
-
-};
 document.getElementById('zoom_out').onclick = function () {
-
+    if (cadCanvas) {
+        cadCanvas.controller.dollyIn();
+        cadCanvas.controller.update();
+    }
+};
+document.getElementById('zoom_in').onclick = function () {
+    if (cadCanvas) {
+        cadCanvas.controller.dollyOut();
+        cadCanvas.controller.update();
+    }
 };
 document.getElementById('zoom_reset').onclick = function () {
-
+    if (cadCanvas) {
+        cadCanvas.resetZoom();
+        cadCanvas.controller.update();
+    }
 };
 document.getElementById('pan_home').onclick = function () {
+    //if (cadCanvas)
+    //cadCanvas.resize($('body').width(), $('body').height());
 };
+document.getElementById('fullscreen').onclick = () => openFullscreen(document.getElementById('cad-view'));
+
+function openFullscreen(elem) {
+    elem = elem ? elem : document.getElementsByTagName('body');
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { /* Firefox */
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+        elem.msRequestFullscreen();
+    }
+}

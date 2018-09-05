@@ -78,7 +78,6 @@ body {
     height: 48px;
     background-color: rgba(255, 255, 255, .7);
     border: 1px solid #ccc;
-    border-radius: 50%;
     background-size: 24px 24px;
     -ms-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -95,6 +94,10 @@ body {
 
 .icon:hover {
     background-color: rgb(204, 204, 204);
+}
+
+.round {
+    border-radius: 50%;
 }
 
 .center {
@@ -146,4 +149,21 @@ body {
     opacity: 0.5;
     cursor: pointer;
     margin-bottom: 6px;
+}
+
+.flat-btn {
+    z-index: 1000;
+    width: auto;
+    top: 15%;
+    height: 20px;
+    opacity: 0.3;
+    cursor: pointer;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: rgb(204, 204, 204);
+    line-height: 20px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 12px;
+    border-radius: 0px 0px 6px 6px;
 }
