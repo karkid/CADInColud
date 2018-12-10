@@ -1,0 +1,48 @@
+[
+  {
+    "name": "Vectorizer#drawEntity",
+    "filePath": "lib/engine/vectorizer/Vectorizer.js",
+    "lines": [
+      {
+        "lineNumber": 13,
+        "line": "    /**"
+      },
+      {
+        "lineNumber": 14,
+        "line": "     * Vectorize to draw"
+      },
+      {
+        "lineNumber": 15,
+        "line": "     * @param {Object} entity - entity object"
+      },
+      {
+        "lineNumber": 16,
+        "line": "     * @param {Object} dxfDb - database object"
+      },
+      {
+        "lineNumber": 17,
+        "line": "     * @return {THREE.Mesh}"
+      },
+      {
+        "lineNumber": 18,
+        "line": "     * @memberof DXFVectorizer"
+      },
+      {
+        "lineNumber": 19,
+        "line": "     */"
+      },
+      {
+        "lineNumber": 20,
+        "line": "    drawEntity(entity, db) {"
+      }
+    ],
+    "codeParams": [
+      "entity",
+      "db"
+    ],
+    "docParams": [
+      "entity",
+      "dxfDb"
+    ]
+  }
+]

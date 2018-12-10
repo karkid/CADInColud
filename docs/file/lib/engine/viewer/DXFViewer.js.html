@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">lib/engine/viewer/DXFViewer.js | cadincloud</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="CAD in cloud"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="cadincloud"><meta property="twitter:description" content="CAD in cloud"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a href="https://KarkiCoder@bitbucket.org/KarkiCoder/cadincloud.git">Repository</a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#engine-controller">engine/controller</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/controller/Controller.js~Controller.html">Controller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/controller/OrbitController.js~OrbitController.html">OrbitController</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#engine-vectorizer">engine/vectorizer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/vectorizer/DXFVectorizer.js~DXFVectorizer.html">DXFVectorizer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/vectorizer/Vectorizer.js~Vectorizer.html">Vectorizer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#engine-viewer">engine/viewer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/viewer/DXFViewer.js~DXFViewer.html">DXFViewer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/lib/engine/viewer/Viewer.js~Viewer.html">Viewer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#parsers">parsers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/DXFParser.js~DXFParser.html">DXFParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/lib/parsers/Parser.js~Parser.html">Parser</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#parsers-dxf-entities">parsers/dxf/entities</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Arc.js~Arc.html">Arc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/AttDef.js~AttDef.html">AttDef</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Circle.js~Circle.html">Circle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Dimension.js~Dimension.html">Dimension</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Ellipse.js~Ellipse.html">Ellipse</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Insert.js~Insert.html">Insert</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/LWPolyline.js~LWPolyline.html">LWPolyline</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Line.js~Line.html">Line</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Mtext.js~Mtext.html">Mtext</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Point.js~Point.html">Point</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Solid.js~Solid.html">Solid</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Spline.js~Spline.html">Spline</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Text.js~Text.html">Text</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Vertex.js~Vertex.html">Vertex</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/EntityParser.js~EntityParser.html">EntityParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#scanners">scanners</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/scanners/DXFScanner.js~DXFScanner.html">DXFScanner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/lib/scanners/Scanner.js~Scanner.html">Scanner</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/engine/viewer/DXFViewer.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import DXFVectorizer from &apos;../vectorizer/DXFVectorizer&apos;;
+import Viewer from &apos;./Viewer&apos;;
+import OrbitController from &apos;../controller/OrbitController&apos;;
+/**
+ *
+ * @extends {Viewer}
+ * @class DXFViewer
+ * @example
+ *  let dxfViewer= new DXFViewer(data, parent, width, height, font) 
+ */
+export default class DXFViewer extends Viewer {
+    /**
+     * DXFViewer class for a dxf object.
+     * @constructor
+     * @param {Object} data - the dxf object
+     * @param {Object} parent - the parent element to which we attach the rendering canvas
+     * @param {Number} width - width of the rendering canvas in pixels
+     * @param {Number} height - height of the rendering canvas in pixels
+     * @param {Object} font - a font loaded with THREE.FontLoader 
+     */
+    constructor(data, parent, width, height, font) {
+        super();
+        let $parent = $(parent);
+        if (!parent) return null;
+
+        this.width = width || parent.clientWidth;
+        this.height = height || parent.clientHeight;
+        this.aspectRatio = this.height == 0 ? 0 : this.width / this.height;
+        this.font = font;
+        this._parent = parent;
+        this._data = data;
+
+        this._scene = new THREE.Scene();
+        this._vectorizer = new DXFVectorizer();
+        this._vectorizer.font = font;
+        this._viewPort = {};
+        this.__createScene();
+
+        this._camera = new THREE.OrthographicCamera(this._viewPort.left, this._viewPort.right, this._viewPort.top, this._viewPort.bottom, 1, 19);
+        this._camera.position.z = 10;
+        this._camera.position.x = this._viewPort.center.x;
+        this._camera.position.y = this._viewPort.center.y;
+
+        this._renderer = new THREE.WebGLRenderer();
+        this._renderer.setSize(width, height);
+        this._renderer.setClearColor(0xfffffff, 1);
+
+        $parent.append(this._renderer.domElement);
+        $parent.show();
+
+        this.controller = new OrbitController(this._camera, parent);
+        this.controller.target.x = this._camera.position.x;
+        this.controller.target.y = this._camera.position.y;
+        this.controller.target.z = 0;
+        this.controller.config.zoomSpeed = 3;
+
+        this.controller.addEventListener(&apos;change&apos;, this.render.bind(this));
+        this.render();
+        this.controller.update();
+
+        $parent.on(&apos;click&apos;, (event) =&gt; {
+            let $el = $(this._renderer.domElement);
+
+            let vector = new THREE.Vector3((event.pageX - $el.offset().left) / $el.innerWidth() * 2 - 1, -((event.pageY - $el.offset().top) / $el.innerHeight()) * 2 + 1, 0.5);
+            vector.unproject(this._camera);
+
+            let dir = vector.sub(this._camera.position).normalize();
+
+            let distance = -this._camera.position.z / dir.z;
+
+            let pos = this._camera.position.clone().add(dir.multiplyScalar(distance));
+
+            console.log(pos.x, pos.y); // Position in cad that is clicked
+        });
+    }
+
+    /**
+     * Render the scene
+     * @public 
+     */
+    render() {
+        this._renderer.render(this._scene, this._camera);
+    }
+
+    /**
+     * @public
+     */
+    resetZoom() {
+        this._camera.position.z = 10;
+        this._camera.position.x = this._viewPort.center.x;
+        this._camera.position.y = this._viewPort.center.y;
+    };
+
+    resize(width, height) {
+        //update width and height
+        this.width = width;
+        this.height = height;
+        this.aspectRatio = this.aspectRatio = this.height == 0 ? 0 : this.width / this.height;
+
+        //update camera
+        let originalWidth = this._renderer.domElement.width;
+        let originalHeight = this._renderer.domElement.height;
+
+        let hscale = width / originalWidth;
+        let vscale = height / originalHeight;
+
+        this._camera.top = vscale * this._camera.top;
+        this._camera.bottom = vscale * this._camera.bottom;
+        this._camera.left = hscale * this._camera.left;
+        this._camera.right = hscale * this._camera.right;
+
+        //Update renderer
+        let devicePxRatio = window.devicePixelRatio || 1;
+        width = Math.floor(width * devicePxRatio);
+        height = Math.floor(height * devicePxRatio);
+        this._renderer.setSize(width, height);
+        this._renderer.setClearColor(0xfffffff, 1);
+        this.render();
+    }
+
+    __createScene() {
+        let dims = {
+            min: {
+                x: false,
+                y: false,
+                z: false
+            },
+            max: {
+                x: false,
+                y: false,
+                z: false
+            }
+        };
+        for (let i = 0; i &lt; this._data.entities.length; i++) {
+            let entity = this._data.entities[i];
+            let obj = null;
+            if (entity.type === &apos;DIMENSION&apos;) {
+                if (entity.block) {
+                    let block = this._data.blocks[entity.block];
+                    if (!block) {
+                        console.error(&apos;Missing referenced block &quot;&apos; + entity.block + &apos;&quot;&apos;);
+                        continue;
+                    }
+                    for (let j = 0; j &lt; block.entities.length; j++) {
+                        obj = this._vectorizer.drawEntity(block.entities[j], this._data);
+                    }
+                } else {
+                    console.log(&apos;WARNING: No block for DIMENSION entity&apos;);
+                }
+            } else {
+                obj = this._vectorizer.drawEntity(entity, this._data);
+            }
+
+            if (obj) {
+                let bbox = new THREE.Box3().setFromObject(obj);
+                if (bbox.min.x &amp;&amp; (dims.min.x === false || dims.min.x &gt; bbox.min.x)) dims.min.x = bbox.min.x;
+                if (bbox.min.y &amp;&amp; (dims.min.y === false || dims.min.y &gt; bbox.min.y)) dims.min.y = bbox.min.y;
+                if (bbox.min.z &amp;&amp; (dims.min.z === false || dims.min.z &gt; bbox.min.z)) dims.min.z = bbox.min.z;
+                if (bbox.max.x &amp;&amp; (dims.max.x === false || dims.max.x &lt; bbox.max.x)) dims.max.x = bbox.max.x;
+                if (bbox.max.y &amp;&amp; (dims.max.y === false || dims.max.y &lt; bbox.max.y)) dims.max.y = bbox.max.y;
+                if (bbox.max.z &amp;&amp; (dims.max.z === false || dims.max.z &lt; bbox.max.z)) dims.max.z = bbox.max.z;
+                this._scene.add(obj);
+            }
+        }
+
+        let upperRightCorner = {
+            x: dims.max.x,
+            y: dims.max.y
+        };
+        let lowerLeftCorner = {
+            x: dims.min.x,
+            y: dims.min.y
+        };
+
+        // Figure out the current viewport extents
+        let vp_width = upperRightCorner.x - lowerLeftCorner.x;
+        let vp_height = upperRightCorner.y - lowerLeftCorner.y;
+        let center = {
+            x: vp_width / 2 + lowerLeftCorner.x,
+            y: vp_height / 2 + lowerLeftCorner.y
+        };
+
+        // Fit all objects into current ThreeDXF DXFViewer
+        let extentsAspectRatio = Math.abs(vp_width / vp_height);
+        if (this.aspectRatio &gt; extentsAspectRatio) {
+            vp_width = vp_height * this.aspectRatio;
+        } else {
+            vp_height = vp_width / this.aspectRatio;
+        }
+
+        this._viewPort = {
+            bottom: -vp_height / 2,
+            left: -vp_width / 2,
+            top: vp_height / 2,
+            right: vp_width / 2,
+            center: {
+                x: center.x,
+                y: center.y
+            }
+        };
+    }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

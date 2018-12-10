@@ -1,0 +1,197 @@
+{
+  "coverage": "77.93%",
+  "expectCount": 213,
+  "actualCount": 166,
+  "files": {
+    "lib/engine/controller/Controller.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "lib/engine/controller/OrbitController.js": {
+      "expectCount": 49,
+      "actualCount": 48,
+      "undocumentLines": [
+        785
+      ]
+    },
+    "lib/engine/vectorizer/DXFVectorizer.js": {
+      "expectCount": 16,
+      "actualCount": 15,
+      "undocumentLines": [
+        21
+      ]
+    },
+    "lib/engine/vectorizer/Vectorizer.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "lib/engine/viewer/DXFViewer.js": {
+      "expectCount": 18,
+      "actualCount": 4,
+      "undocumentLines": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        33,
+        34,
+        36,
+        39,
+        44,
+        51,
+        94,
+        121
+      ]
+    },
+    "lib/engine/viewer/Viewer.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    },
+    "lib/parsers/DXFParser.js": {
+      "expectCount": 21,
+      "actualCount": 21,
+      "undocumentLines": []
+    },
+    "lib/parsers/Parser.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    },
+    "lib/parsers/dxf/entities/Arc.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        56
+      ]
+    },
+    "lib/parsers/dxf/entities/AttDef.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        111
+      ]
+    },
+    "lib/parsers/dxf/entities/Circle.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        60
+      ]
+    },
+    "lib/parsers/dxf/entities/Dimension.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        64
+      ]
+    },
+    "lib/parsers/dxf/entities/Ellipse.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        61
+      ]
+    },
+    "lib/parsers/dxf/entities/EntityParser.js": {
+      "expectCount": 6,
+      "actualCount": 6,
+      "undocumentLines": []
+    },
+    "lib/parsers/dxf/entities/Insert.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        76
+      ]
+    },
+    "lib/parsers/dxf/entities/LWPolyline.js": {
+      "expectCount": 5,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        69,
+        138
+      ]
+    },
+    "lib/parsers/dxf/entities/Line.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        53
+      ]
+    },
+    "lib/parsers/dxf/entities/Mtext.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        68
+      ]
+    },
+    "lib/parsers/dxf/entities/Point.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        52
+      ]
+    },
+    "lib/parsers/dxf/entities/Solid.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        59
+      ]
+    },
+    "lib/parsers/dxf/entities/Spline.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        87
+      ]
+    },
+    "lib/parsers/dxf/entities/Text.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        68
+      ]
+    },
+    "lib/parsers/dxf/entities/Vertex.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        72
+      ]
+    },
+    "lib/scanners/DXFScanner.js": {
+      "expectCount": 21,
+      "actualCount": 19,
+      "undocumentLines": [
+        35,
+        36
+      ]
+    },
+    "lib/scanners/Scanner.js": {
+      "expectCount": 12,
+      "actualCount": 12,
+      "undocumentLines": []
+    }
+  }
+}

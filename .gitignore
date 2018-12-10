@@ -1,6 +1,5 @@
 node_modules
 dist
 *.log*
-docs
 lib/test
 lib_build

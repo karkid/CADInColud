@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/parsers/DXFParser.js | cadincloud</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="CAD in cloud"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="cadincloud"><meta property="twitter:description" content="CAD in cloud"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a href="https://KarkiCoder@bitbucket.org/KarkiCoder/cadincloud.git">Repository</a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#engine-controller">engine/controller</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/controller/Controller.js~Controller.html">Controller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/controller/OrbitController.js~OrbitController.html">OrbitController</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#engine-vectorizer">engine/vectorizer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/vectorizer/DXFVectorizer.js~DXFVectorizer.html">DXFVectorizer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/vectorizer/Vectorizer.js~Vectorizer.html">Vectorizer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#engine-viewer">engine/viewer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/viewer/DXFViewer.js~DXFViewer.html">DXFViewer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/lib/engine/viewer/Viewer.js~Viewer.html">Viewer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#parsers">parsers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/DXFParser.js~DXFParser.html">DXFParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/lib/parsers/Parser.js~Parser.html">Parser</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#parsers-dxf-entities">parsers/dxf/entities</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Arc.js~Arc.html">Arc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/AttDef.js~AttDef.html">AttDef</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Circle.js~Circle.html">Circle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Dimension.js~Dimension.html">Dimension</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Ellipse.js~Ellipse.html">Ellipse</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Insert.js~Insert.html">Insert</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/LWPolyline.js~LWPolyline.html">LWPolyline</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Line.js~Line.html">Line</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Mtext.js~Mtext.html">Mtext</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Point.js~Point.html">Point</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Solid.js~Solid.html">Solid</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Spline.js~Spline.html">Spline</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Text.js~Text.html">Text</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Vertex.js~Vertex.html">Vertex</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/EntityParser.js~EntityParser.html">EntityParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#scanners">scanners</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/scanners/DXFScanner.js~DXFScanner.html">DXFScanner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/lib/scanners/Scanner.js~Scanner.html">Scanner</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/parsers/DXFParser.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import DXFScanner from &quot;../scanners/DXFScanner&quot;;
+import Parser from &quot;./Parser&quot;;
+import AUTO_CAD_COLOR_INDEX from &apos;./dxf/AutoCadColorIndex&apos;;
+import LINE from &quot;./dxf/entities/Line&quot;;
+import ARC from &quot;./dxf/entities/Arc&quot;;
+import CIRCLE from &quot;./dxf/entities/Circle&quot;;
+import MTEXT from &quot;./dxf/entities/Mtext&quot;;
+import POINT from &quot;./dxf/entities/Point&quot;;
+import VERTEX from &quot;./dxf/entities/Vertex&quot;;
+import TEXT from &quot;./dxf/entities/Text&quot;;
+import SPLINE from &quot;./dxf/entities/Spline&quot;;
+import ELLIPSE from &quot;./dxf/entities/Ellipse&quot;;
+import INSERT from &quot;./dxf/entities/Insert&quot;;
+import SOLID from &quot;./dxf/entities/Solid&quot;;
+import ATTDEF from &quot;./dxf/entities/AttDef&quot;;
+import DIMENSION from &quot;./dxf/entities/Dimension&quot;;
+import LWPOLYLINE from &quot;./dxf/entities/LWPolyline&quot;;
+
+/**
+ * @public
+ * @extends {Parser}
+ * @example 
+ * let dxfParser = new DXFParser()
+ */
+export default class DXFParser extends Parser {
+    /**
+     * @constructor
+     */
+    constructor() {
+        super();
+    }
+
+    /**
+     * Parse the DXF data
+     * @override
+     * @public
+     * @param {String} dxfString - DXF data
+     */
+    parse(dxfString) {
+        let scanner = new DXFScanner(dxfString.split(/\r\n|\r|\n/g));
+        if (!scanner.hasNext()) throw Error(&quot;Empty File&quot;);
+        return this.__pasrseSections(scanner);
+    }
+
+    /**
+     * General information about the drawing is found in various section. 
+     * 1. HEADER
+     * 2. CLASS
+     * 3. TABLES
+     * 4. BLOCKS
+     * 5. ENTITIES
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} dxfString
+     */
+    __pasrseSections(scanner) {
+        let dxf = {};
+        while (!scanner.isEOF()) {
+            if (scanner.isStartOfSection()) {
+                let group = scanner.next().peek();
+                // Be sure we are reading a section code
+                if (group.code !== 2) {
+                    console.error(&apos;Unexpected code %s after 0:SECTION %j&apos;, group);
+                    continue;
+                }
+
+                if (group.value === &apos;HEADER&apos;) {
+                    console.log(&apos;&gt; HEADER&apos;);
+                    dxf.header = this.__parseHeaderSection(scanner);
+                    console.log(&apos;&lt;&apos;);
+                } else if (group.value === &apos;BLOCKS&apos;) {
+                    console.log(&apos;&gt; BLOCKS&apos;);
+                    dxf.blocks = this.__parseBlockSection(scanner);
+                    console.log(&apos;&lt;&apos;);
+                } else if (group.value === &apos;ENTITIES&apos;) {
+                    console.log(&apos;&gt; ENTITIES&apos;);
+                    dxf.entities = this.__parseEntitiesSection(scanner);
+                    console.log(&apos;&lt;&apos;);
+                } else if (group.value === &apos;TABLES&apos;) {
+                    console.log(&apos;&gt; TABLES&apos;);
+                    dxf.tables = this.__parseTablesSection(scanner);
+                    console.log(&apos;&lt;&apos;);
+                } else if (group.value === &apos;EOF&apos;) {
+                    console.log(&apos;EOF&apos;);
+                } else {
+                    console.warn(&apos;Skipping section \&apos;%s\&apos;&apos;, group.value);
+                }
+            } else {
+                scanner.next();
+            }
+        }
+        return dxf;
+    }
+
+    /**
+     * General information about the drawing is found in this section. 
+     * It consists of an DXF database version number and a number of system variables. 
+     * Each parameter contains a variable name and its associated value.
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} header section
+     */
+    __parseHeaderSection(scanner) {
+        let header = {}
+        console.log(this);
+        while (!scanner.isEndOfSection()) {
+            let group = scanner.next().peek();
+            if (group.code === 9) {
+                let variableName = group.value;
+                group = scanner.next().peek();
+                if (group.code === 10) {
+                    header[variableName] = this.__parsePoint(scanner);
+                } else {
+                    header[variableName] = group.value;
+                }
+            }
+        }
+        return header;
+    }
+
+    /**
+     * This section contains definitions for the following symbol tables.
+     * 1. APPID (application identification table)
+     * 2. BLOCK_RECORD (block reference table)
+     * 3. DIMSTYLE (dimension style table)
+     * 4. LAYER (layer table)
+     * 5. LTYPE (linetype table)
+     * 6. STYLE (text style table)
+     * 7. UCS (User Coordinate System table)
+     * 8. VIEW (view table)
+     * 9. VPORT (tableRecord configuration table)
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} table section
+     */
+    __parseTablesSection(scanner) {
+        let tables = {};
+        while (!scanner.isEndOfSection()) {
+            let group = scanner.next().peek();
+            if (scanner.isStartOfTable()) {
+                group = scanner.next().peek();
+                tables[group.value] = this.__parseTable(scanner);
+            }
+        }
+        return tables;
+    }
+
+    /**
+     * @private
+     * @param {DXFScanner} scanner 
+     */
+    __parseTable(scanner) {
+        let table = {};
+        while (!scanner.isEndOfTable()) {
+            let group = scanner.next().peek();
+            switch (group.code) {
+                case 5:
+                    table.handel = group.value;
+                    break;
+                case 70:
+                    table.maxEntries = group.value;
+                    break;
+                case 330:
+                    table.softOwnerHandel = group.value;
+                    break;
+                case 102:
+                    table[group.value.slice(1)] = this.__parseAppGroup(scanner);
+                    break;
+                case 0:
+                    table[group.value] = this.__parseTableRecords(scanner);
+                    break;
+                case 100:
+                default:
+                    console.log(&quot;Unhandel group %j&quot;, group);
+            }
+        }
+        return table;
+    }
+
+    /**
+     * Table entries
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} appGroup object
+     */
+    __parseTableRecords(scanner) {
+        let group = scanner.peek();
+        switch (group.value) {
+            case &apos;LTYPE&apos;:
+                return this.__parseLineTypeRecords(scanner);
+            case &apos;VPORT&apos;:
+                return this.__parseViewPortRecords(scanner);
+            case &apos;LAYER&apos;:
+                return this.__parseLayerRecords(scanner);
+            case &apos;DIMSTYLE&apos;:
+                return this.__parseDimStyleRecords(scanner);
+            case &apos;BLOCK_RECORD &apos;:
+            case &apos;STYLE&apos;:
+            case &apos;UCS&apos;:
+            case &apos;VIEW&apos;:
+            case &apos;APPID&apos;:
+            default:
+                console.log(&apos;Unhandel group %j&apos;, group);
+        }
+    }
+
+    /**
+     * Parese line type records
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} line type records object
+     */
+    __parseLineTypeRecords(scanner) {
+        let length,
+            tableRecords = {},
+            tableRecord = {};
+        while (!scanner.isEndOfTable()) {
+            let group = scanner.next().peek();
+            switch (group.code) {
+                case 5:
+                    tableRecord.handel = group.value;
+                    break;
+                case 102:
+                    tableRecord[group.value.slice(1)] = this.__parseAppGroup(scanner);
+                    break;
+                case 2:
+                    tableRecord.name = group.value;
+                    break;
+                case 3:
+                    tableRecord.description = group.value;
+                    break;
+                case 73: // Number of elements for this line type (dots, dashes, spaces);
+                    tableRecord.elements = group.value;
+                    if (tableRecord.elements &gt; 0) tableRecord.pattern = [];
+                    break;
+                case 40: // total pattern length
+                    tableRecord.patternLength = group.value;
+                    break;
+                case 49:
+                    tableRecord.pattern.push(group.value);
+                    break;
+                case 0:
+                    if (tableRecord.elements &gt; 0 &amp;&amp; tableRecord.elements !== tableRecord.pattern.length)
+                        log.warn(&apos;lengths do not match on LTYPE pattern&apos;);
+                    tableRecords[tableRecord.name] = tableRecord;
+                    tableRecord = {};
+                    break;
+                default:
+                    console.log(&apos;Unhandel group %j&apos;, group);
+            }
+        }
+        return tableRecords;
+    }
+
+    /**
+     * Parse view ports records
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} view ports records object
+     */
+    __parseViewPortRecords(scanner) {
+        var tableRecords = [], // Multiple table entries may have the same name indicating a multiple tableRecord configuration
+            tableRecord = {};
+        while (!scanner.isEndOfTable()) {
+            let group = scanner.next().peek();
+            switch (group.code) {
+                case 2: // layer name
+                    tableRecord.name = group.value;
+                    break;
+                case 5:
+                    tableRecord.handel = group.value;
+                    break;
+                case 10:
+                    tableRecord.lowerLeftCorner = this.__parsePoint(scanner);
+                    break;
+                case 11:
+                    tableRecord.upperRightCorner = this.__parsePoint(scanner);
+                    break;
+                case 12:
+                    tableRecord.center = this.__parsePoint(scanner);
+                    break;
+                case 13:
+                    tableRecord.snapBasePoint = this.__parsePoint(scanner);
+                    break;
+                case 14:
+                    tableRecord.snapSpacing = this.__parsePoint(scanner);
+                    break;
+                case 15:
+                    tableRecord.gridSpacing = this.__parsePoint(scanner);
+                    break;
+                case 16:
+                    tableRecord.viewDirectionFromTarget = this.__parsePoint(scanner);
+                    break;
+                case 17:
+                    tableRecord.viewTarget = this.__parsePoint(scanner);
+                    break;
+                case 42:
+                    tableRecord.lensLength = group.value;
+                    break;
+                case 43:
+                    tableRecord.frontClippingPlane = group.value;
+                    break;
+                case 44:
+                    tableRecord.backClippingPlane = group.value;
+                    break;
+                case 45:
+                    tableRecord.viewHeight = group.value;
+                    break;
+                case 50:
+                    tableRecord.snapRotationAngle = group.value;
+                    break;
+                case 51:
+                    tableRecord.viewTwistAngle = group.value;
+                    break;
+                case 79:
+                    tableRecord.orthographicType = group.value;
+                    break;
+                case 102:
+                    tableRecord[group.value.slice(1)] = this.__parseAppGroup(scanner);
+                    break;
+                case 110:
+                    tableRecord.ucsOrigin = this.__parsePoint(scanner);
+                    break;
+                case 111:
+                    tableRecord.ucsXAxis = this.__parsePoint(scanner);
+                    break;
+                case 112:
+                    tableRecord.ucsYAxis = this.__parsePoint(scanner);
+                    break;
+                case 110:
+                    tableRecord.ucsOrigin = this.__parsePoint(scanner);
+                    break;
+                case 281:
+                    tableRecord.renderMode = group.value;
+                    break;
+                case 281:
+                    // 0 is one distant light, 1 is two distant lights
+                    tableRecord.defaultLightingType = group.value;;
+                    break;
+                case 292:
+                    tableRecord.defaultLightingOn = group.value;
+                    break;
+                case 330:
+                    tableRecord.ownerHandle = group.value;
+                    break;
+                case 63:
+                case 421:
+                case 431:
+                    tableRecord.ambientColor = group.value;
+                    break;
+                case 0:
+                    tableRecords.push(tableRecord);
+                    tableRecord = {};
+                    break;
+                default:
+                    console.log(&apos;Unhandel group %j&apos;, group);
+            }
+        }
+        return tableRecords;
+    }
+
+    /**
+     * Parse layer records
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} layer records object
+     */
+    __parseLayerRecords(scanner) {
+        var tableRecords = {},
+            tableRecord = {};
+        while (!scanner.isEndOfTable()) {
+            let group = scanner.next().peek();
+            switch (group.code) {
+                case 2: // layer name
+                    tableRecord.name = group.value;
+                    break;
+                case 5:
+                    tableRecord.handel = group.value;
+                    break;
+                case 6: // Linetype name
+                    tableRecord.lineType = group.value;
+                    break;
+                case 62: // color, visibility
+                    tableRecord.visible = group.value &gt;= 0; //Color number (if negative, layer is Off)
+                    // TODO 0 and 256 are BYBLOCK and BYLAYER respectively. Need to handle these values for layers?.
+                    let color = this.__getAcadColor(Math.abs(group.value));
+                    if (color)
+                        tableRecord.color = color;
+                    break;
+                case 70: // frozen layer
+                    //1 = Layer is frozen, otherwise layer is thawed 
+                    //2 = Layer is frozen by default in new viewports
+                    //4 = Layer is locked
+                    tableRecord.frozen = ((group.value &amp; 1) != 0 || (group.value &amp; 2) != 0);
+                    break;
+                case 102:
+                    tableRecord[group.value.slice(1)] = this.__parseAppGroup(scanner);
+                    break;
+                case 0:
+                    tableRecords[tableRecord.name] = tableRecord;
+                    tableRecord = {};
+                    break;
+                default:
+                    console.log(&apos;Unhandel group %j&apos;, group);
+            }
+        }
+        return tableRecords;
+    }
+
+    /**
+     * Parse dim style records
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} dim style records object
+     */
+    __parseDimStyleRecords(scanner) {
+        var tableRecords = {},
+            tableRecord = {};
+        while (!scanner.isEndOfTable()) {
+            let group = scanner.next().peek();
+            switch (group.code) {
+                case 2: // layer name
+                    tableRecord.name = group.value;
+                    break;
+                case 3:
+                    tableRecord.DIMPOST = group.value;
+                    break;
+                case 4:
+                    tableRecord.DIMAPOST = group.value;
+                    break;
+                case 5:
+                    tableRecord.DIMBLK = group.value;
+                    break;
+                case 6:
+                    tableRecord.DIMBLK1 = group.value;
+                    break;
+                case 7:
+                    tableRecord.DIMBLK2 = group.value;
+                    break;
+                case 40:
+                    tableRecord.DIMSCALE = group.value;
+                    break;
+                case 41:
+                    tableRecord.DIMASZ = group.value;
+                    break;
+                case 42:
+                    tableRecord.DIMEXO = group.value;
+                    break;
+                case 43:
+                    tableRecord.DIMDLI = group.value;
+                    break;
+                case 44:
+                    tableRecord.DIMEXE = group.value;
+                    break;
+                case 45:
+                    tableRecord.DIMRND = group.value;
+                    break;
+                case 46:
+                    tableRecord.DIMDLE = group.value;
+                    break;
+                case 47:
+                    tableRecord.DIMTP = group.value;
+                    break;
+                case 48:
+                    tableRecord.DIMTM = group.value;
+                    break;
+                case 140:
+                    tableRecord.DIMTXT = group.value;
+                    break;
+                case 141:
+                    tableRecord.DIMCEN = group.value;
+                    break;
+                case 142:
+                    tableRecord.DIMTSZ = group.value;
+                    break;
+                case 143:
+                    tableRecord.DIMALTF = group.value;
+                    break;
+                case 144:
+                    tableRecord.DIMLFAC = group.value;
+                    break;
+                case 145:
+                    tableRecord.DIMTVP = group.value;
+                    break;
+                case 146:
+                    tableRecord.DIMTFAC = group.value;
+                    break;
+                case 147:
+                    tableRecord.DIMGAP = group.value;
+                    break;
+                case 71:
+                    tableRecord.DIMTOL = group.value;
+                    break;
+                case 72:
+                    tableRecord.DIMLIM = group.value;
+                    break;
+                case 73:
+                    tableRecord.DIMTIH = group.value;
+                    break;
+                case 74:
+                    tableRecord.DIMTOH = group.value;
+                    break;
+                case 75:
+                    tableRecord.DIMSE1 = group.value;
+                    break;
+                case 76:
+                    tableRecord.DIMSE2 = group.value;
+                    break;
+                case 77:
+                    tableRecord.DIMTAD = group.value;
+                    break;
+                case 78:
+                    tableRecord.DIMZIN = group.value;
+                    break;
+                case 170:
+                    tableRecord.DIMALT = group.value;
+                    break;
+                case 171:
+                    tableRecord.DIMALTD = group.value;
+                    break;
+                case 172:
+                    tableRecord.DIMTOFL = group.value;
+                    break;
+                case 173:
+                    tableRecord.DIMSAH = group.value;
+                    break;
+                case 174:
+                    tableRecord.DIMTIX = group.value;
+                    break;
+                case 175:
+                    tableRecord.DIMSOXD = group.value;
+                    break;
+                case 176:
+                    tableRecord.DIMDLRD = group.value;
+                    break;
+                case 177:
+                    tableRecord.DIMCLRE = group.value;
+                    break;
+                case 178:
+                    tableRecord.DIMCLRT = group.value;
+                    break;
+                case 270:
+                    tableRecord.DIMUNIT = group.value;
+                    break;
+                case 271:
+                    tableRecord.DIMDEC = group.value;
+                    break;
+                case 272:
+                    tableRecord.DIMTDEC = group.value;
+                    break;
+                case 273:
+                    tableRecord.DIMALTU = group.value;
+                    break;
+                case 274:
+                    tableRecord.DIMALTTD = group.value;
+                    break;
+                case 275:
+                    tableRecord.DIMAUNIT = group.value;
+                    break;
+                case 280:
+                    tableRecord.DIMJUST = group.value;
+                    break;
+                case 281:
+                    tableRecord.DIMSD1 = group.value;
+                    break;
+                case 282:
+                    tableRecord.DIMSD2 = group.value;
+                    break;
+                case 283:
+                    tableRecord.DIMTOLJ = group.value;
+                    break;
+                case 284:
+                    tableRecord.DIMTZIN = group.value;
+                    break;
+                case 285:
+                    tableRecord.DIMALTZ = group.value;
+                    break;
+                case 286:
+                    tableRecord.DIMALTTZ = group.value;
+                    break;
+                case 287:
+                    tableRecord.DIMFIT = group.value;
+                    break;
+                case 288:
+                    tableRecord.DIMUPT = group.value;
+                    break;
+                case 340:
+                    tableRecord.textStyleHandel = group.value;
+                    break;
+                case 105:
+                    tableRecord.handel = group.value;
+                    break;
+                case 70:
+                    tableRecord.stdFlag = group.value;
+                    break;
+                case 102:
+                    tableRecord[group.value.slice(1)] = this.__parseAppGroup(scanner);
+                    break;
+                case 0:
+                    tableRecords[tableRecord.name] = tableRecord;
+                    tableRecord = {};
+                    break;
+                default:
+                    console.log(&apos;Unhandel group %j&apos;, group);
+            }
+        }
+        return tableRecords;
+    }
+
+    /**
+     * Contains block definition and drawing entities that make up each block 
+     * reference in the drawing.
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} block section
+     */
+    __parseBlockSection(scanner) {
+        return this.__parseBlocks(scanner);;
+    }
+
+    /**
+     * Contains block definition and drawing entities that make up each block 
+     * reference in the drawing.
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} block section
+     */
+    __parseBlocks(scanner) {
+        let blocks = {},
+            block = {};
+        while (!scanner.isEndOfSection()) {
+            scanner.next();
+            if (scanner.isStartOfBlock()) {
+                block.beginBlock = this.__parseBeginBlock(scanner);
+            } else if (scanner.isEndOfBlock()) {
+                block.endBlock = this.__parseEndBlock(scanner);
+                if (!block.beginBlock.name)
+                    console.error(&apos;block with handle &quot;&apos; + block.beginBlock.handle + &apos;&quot; is missing a name.&apos;);
+                else
+                    blocks[block.beginBlock.name] = block;
+                block = {};
+            } else if (scanner.peek().code == 0) {
+                let entity = this.__parseEntity(scanner);
+                if (entity) {
+                    if (!block.entities)
+                        block.entities = [];
+                    block.entities.push(entity);
+                    scanner.rewind();
+                }
+            } else {
+                console.log(&apos;Unhandel group %j&apos;, scanner.peek());
+            }
+        }
+        return blocks;
+    }
+
+    /**
+     * Begins each block entry (a block entity definition)
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} a block entity definition
+     */
+    __parseBeginBlock(scanner) {
+        let block = {};
+        while (true) {
+            let group = scanner.next().peek();
+            switch (group.code) {
+                case 0:
+                    scanner.rewind();
+                    return block;
+                case 1:
+                    block.xrefPath = group.value;
+                    break;
+                case 2:
+                    block.name = group.value;
+                    break;
+                case 3:
+                    block.altName = group.value;
+                    break;
+                case 5:
+                    block.handle = group.value;
+                    break;
+                case 8:
+                    block.layer = group.value;
+                    break;
+                case 10:
+                    block.position = this.__parsePoint(scanner);
+                    break;
+                case 67:
+                    block.paperSpace = (group.value &amp;&amp; group.value == 1) ? true : false;
+                    break;
+                case 70:
+                    if (group.value != 0) {
+                        block.type = group.value;
+                    }
+                    break;
+                case 102:
+                    block[group.value.slice(1)] = this.__parseAppGroup(scanner);
+                    break;
+                case 330:
+                    block.ownerHandle = group.value;
+                    break;
+                default:
+                    console.log(&apos;Unhandel group %j&apos;, group);
+            }
+        }
+    }
+
+    /**
+     * End of each block entry (an endblk entity definition)
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} an endblk entity definition
+     */
+    __parseEndBlock(scanner) {
+        let block = {};
+        while (!scanner.isCurrentGroup(100, &apos;AcDbBlockEnd&apos;)) {
+            let group = scanner.next().peek();
+            switch (group.code) {
+                case 5:
+                    block.handle = group.value;
+                    break;
+                case 102:
+                    block[group.value.slice(1)] = this.__parseAppGroup(scanner);
+                    break;
+                case 330:
+                    block.ownerHandle = group.value;
+                    break;
+                default:
+                    console.log(&apos;Unhandel group %j&apos;, group);
+            }
+        }
+        return block;
+    }
+
+    /**
+     * This section contains the graphical objects (entities) in the drawing,
+     * including block references (insert entities).
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} entities section
+     */
+    __parseEntitiesSection(scanner) {
+        let entities = [];
+        while (!scanner.isEndOfSection()) {
+            let group = scanner.next().peek();
+            if (group.code === 0) {
+                let entity = this.__parseEntity(scanner);
+                if (entity)
+                    entities.push(entity);
+            }
+        }
+        return entities;
+    }
+
+    /**
+     * Parse drawing entity
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} entity object
+     */
+    __parseEntity(scanner) {
+        let group = scanner.peek();
+        let entity = null;
+        switch (group.value) {
+            case &apos;LINE&apos;:
+                scanner.rewind();
+                entity = LINE.parse(scanner);
+                break;
+            case &apos;ARC&apos;:
+                scanner.rewind();
+                entity = ARC.parse(scanner);
+                break;
+            case &apos;CIRCLE&apos;:
+                scanner.rewind();
+                entity = CIRCLE.parse(scanner);
+                break;
+            case &apos;MTEXT&apos;:
+                scanner.rewind();
+                entity = MTEXT.parse(scanner);
+                break;
+            case &apos;POINT&apos;:
+                scanner.rewind();
+                entity = POINT.parse(scanner);
+                break;
+            case &apos;VERTEX&apos;:
+                scanner.rewind();
+                entity = VERTEX.parse(scanner);
+                break;
+            case &apos;SPLINE&apos;:
+                scanner.rewind();
+                entity = SPLINE.parse(scanner);
+                break;
+            case &apos;TEXT&apos;:
+                scanner.rewind();
+                entity = TEXT.parse(scanner);
+                break;
+            case &apos;ELLIPSE&apos;:
+                scanner.rewind();
+                entity = ELLIPSE.parse(scanner);
+                break;
+            case &apos;INSERT&apos;:
+                scanner.rewind();
+                entity = INSERT.parse(scanner);
+                break;
+            case &apos;SOLID&apos;:
+                scanner.rewind();
+                entity = SOLID.parse(scanner);
+                break;
+            case &apos;ATTDEF&apos;:
+                scanner.rewind();
+                entity = ATTDEF.parse(scanner);
+                break;
+            case &apos;DIMENSION&apos;:
+                scanner.rewind();
+                entity = DIMENSION.parse(scanner);
+                break;
+            case &apos;LWPOLYLINE&apos;:
+                scanner.rewind();
+                entity = LWPOLYLINE.parse(scanner);
+                break;
+
+        }
+        return entity;
+    }
+
+    /**
+     * Returns the color value of the given AutoCad color index value
+     * @private
+     * @param {Number} index - color index
+     * @return {Number} color value as a number
+     */
+    __getAcadColor(index) {
+        return AUTO_CAD_COLOR_INDEX[index];
+    }
+
+    /**
+     * Indicates the start of an extension dictionary group. This g roup exists
+     * only if persistent reactors have been attached to this object (optional)
+     * @private
+     * @param {DXFScanner} scanner - scanner object
+     * @returns {Object} appGroup object
+     */
+    __parseAppGroup(scanner) {
+        let appGroup = {};
+        while (!scanner.isEndOfAppGroup()) {
+            let group = scanner.next().peek();
+            switch (group.code) {
+                case 360:
+                    appGroup.softOwnerHandel = group.value;
+                    break;
+                case 330:
+                    appGroup.hardOwnerHandel = group.value;
+                    break;
+                default:
+                    console.log(&apos;Unhandel group %j&apos;, group);
+            }
+        }
+        return appGroup;
+    }
+
+    /**
+     * Parses a 2D or 3D point, returning it as an object with x, y, and
+     * (sometimes) z property if it is 3D. It is assumed the current group
+     * is x of the point being read in, and scanner.next() will return the
+     * y. The parser will determine if there is a z point automatically.
+     * @param {DXFScanner} scanner - scanner object
+     * @return {Object} The 2D or 3D point as an object with x, y[, z]
+     */
+    __parsePoint(scanner) {
+        let point = {},
+            group = scanner.peek(),
+            code = group.code; // group code for X-Coordinate
+
+        point.x = group.value;
+        code += 10; // group code for Y-Coordinate is at 10 code offset from X-Coordinate
+        group = scanner.next().peek();
+        if (group.code != code) {
+            scanner.rewind();
+            return point;
+        }
+
+        point.y = group.value;
+        code += 10; // group code for Z-Coordinate is at 10 code offset from Y-Coordinate
+        group = scanner.next().peek();
+        if (group.code != code) {
+            scanner.rewind();
+            return point;
+        }
+
+        point.z = group.value;
+
+        return point;
+    }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

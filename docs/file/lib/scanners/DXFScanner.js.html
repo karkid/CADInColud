@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/scanners/DXFScanner.js | cadincloud</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="CAD in cloud"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="cadincloud"><meta property="twitter:description" content="CAD in cloud"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a href="https://KarkiCoder@bitbucket.org/KarkiCoder/cadincloud.git">Repository</a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#engine-controller">engine/controller</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/controller/Controller.js~Controller.html">Controller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/controller/OrbitController.js~OrbitController.html">OrbitController</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#engine-vectorizer">engine/vectorizer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/vectorizer/DXFVectorizer.js~DXFVectorizer.html">DXFVectorizer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/vectorizer/Vectorizer.js~Vectorizer.html">Vectorizer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#engine-viewer">engine/viewer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/engine/viewer/DXFViewer.js~DXFViewer.html">DXFViewer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/lib/engine/viewer/Viewer.js~Viewer.html">Viewer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#parsers">parsers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/DXFParser.js~DXFParser.html">DXFParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/lib/parsers/Parser.js~Parser.html">Parser</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#parsers-dxf-entities">parsers/dxf/entities</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Arc.js~Arc.html">Arc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/AttDef.js~AttDef.html">AttDef</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Circle.js~Circle.html">Circle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Dimension.js~Dimension.html">Dimension</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Ellipse.js~Ellipse.html">Ellipse</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Insert.js~Insert.html">Insert</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/LWPolyline.js~LWPolyline.html">LWPolyline</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Line.js~Line.html">Line</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Mtext.js~Mtext.html">Mtext</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Point.js~Point.html">Point</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Solid.js~Solid.html">Solid</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Spline.js~Spline.html">Spline</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Text.js~Text.html">Text</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/Vertex.js~Vertex.html">Vertex</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/lib/parsers/dxf/entities/EntityParser.js~EntityParser.html">EntityParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-instance">instance</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#scanners">scanners</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/scanners/DXFScanner.js~DXFScanner.html">DXFScanner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/lib/scanners/Scanner.js~Scanner.html">Scanner</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/scanners/DXFScanner.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Scanner from &apos;./Scanner&apos;
+/**
+ * Using AutoCad 2012 DXF Reference(See pages 3 - 10)
+ * http://images.autodesk.com/adsk/files/autocad_2012_pdf_dxf-reference_enu.pdf
+ * 
+ * @public
+ * @extends {Scanner}
+ * @example 
+ * let dxfScanner = new DXFScanner()
+ */
+export default class DXFScanner extends Scanner {
+    /**
+     * 
+     * @param {Array} dxfData - DXF Data in Array object 
+     */
+    constructor(dxfData) {
+        super(dxfData || []);
+    }
+
+    /**
+     * Increment the file pointer
+     * @public
+     * @override
+     * @return {this} refrence to Scanner object
+     * @throws {Error} throw error when no data to read
+     */
+    next() {
+        if (!this.hasNext()) {
+            if (!this._eof)
+                throw new Error(&apos;Unexpected end of input: EOF group not read before end of file. Ended on code &apos; + this._data[this._pointer]);
+            else
+                throw new Error(&apos;Cannot call \&apos;next\&apos; after EOF group has been read&apos;);
+        }
+
+        this._pointer += 2; // Why ? Group code composed of pairs of codes and associated values    
+        if (this.isCurrentGroup(0, &apos;EOF&apos;)) this._eof = true;
+
+        return this;
+    }
+
+    /**
+     * Read the current position group in the file
+     * @public
+     * @override
+     * @return {{code: Number}|*} the first is the group code, the second is the value
+     * @throws {Error} throw error when unable to read the group data from file
+     */
+    peek() {
+        if (!this.hasNext()) {
+            if (!this.isEOF())
+                throw new Error(&apos;Unexpected end of input: EOF group not read before end of file. Ended on code &apos; + this._data[this._pointer]);
+            else
+                throw new Error(&apos;Cannot call \&apos;next\&apos; after EOF group has been read&apos;);
+        }
+
+        var group = {
+            code: parseInt(this._data[this._pointer])
+        };
+
+        group.value = this.__parseGroupValue(group.code, this._data[this._pointer + 1].trim());
+
+        return group;
+    }
+
+    /**
+     * Set the position file pointer
+     * @public
+     * @override
+     * @param {Number} numberOfGroups - number of group
+     */
+    rewind(numberOfGroups) {
+        numberOfGroups = numberOfGroups || 1;
+        this._pointer = this._pointer - numberOfGroups * 2;
+    }
+
+    /**
+     * Return true if only if there is data to read
+     * @public
+     * @override
+     * @returns {boolean} true/false
+     */
+    hasNext() {
+        // Check if we have read EOF group code
+        if (this._eof) {
+            return false;
+        }
+
+        // We need to be sure there are two lines available
+        if (this._pointer &gt; this._data.length - 2) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Return true if only if there is End of file
+     * @public
+     * @override
+     * @returns {boolean} true/false
+     */
+    isEOF() {
+        return this._eof;
+    }
+
+    /**
+     * Gives current position in the file
+     * @public
+     * @override
+     * @returns {Number} current position
+     */
+    ftell() {
+        return this._pointer;
+    }
+
+    /**
+     * Return true only if the current group of scanner is specified one
+     * @public
+     * @param {Number} code - group code 
+     * @param {*} value - goup value
+     * @param { function(currentGroup: Object, supplyGroup: Object): boolean } comp - describe your comparatoe
+     * @returns {boolean} true/false
+     */
+    isCurrentGroup(code, value, comp = null) {
+        let curGroup = this.peek();
+        if (!comp)
+            return curGroup.code === code &amp;&amp; curGroup.value === value;
+        else
+            return comp(curGroup, {
+                code: code,
+                value: value
+            });
+    }
+
+    /**
+     * Return if Section block start
+     * @public
+     * @returns {boolean} true/false
+     */
+    isStartOfSection() {
+        return this.isCurrentGroup(0, &apos;SECTION&apos;);
+    }
+
+    /**
+     * Return if Section block end
+     * @public
+     * @returns {boolean} true/false
+     */
+    isEndOfSection() {
+        return this.isCurrentGroup(0, &apos;ENDSEC&apos;);
+    }
+
+    /**
+     * Return if Table block start
+     * @public
+     * @returns {boolean} true/false
+     */
+    isStartOfTable() {
+        return this.isCurrentGroup(0, &apos;TABLE&apos;);
+    }
+
+    /**
+     * Return if Table block end
+     * @public
+     * @returns {boolean} true/false
+     */
+    isEndOfTable() {
+        return this.isCurrentGroup(0, &apos;ENDTAB&apos;);
+    }
+
+    /**
+     * Return if Table block start
+     * @public
+     * @returns {boolean} true/false
+     */
+    isStartOfBlock() {
+        return this.isCurrentGroup(0, &apos;BLOCK&apos;);
+    }
+
+    /**
+     * Return if Table block end
+     * @public
+     * @returns {boolean} true/false
+     */
+    isEndOfBlock() {
+        return this.isCurrentGroup(0, &apos;ENDBLK&apos;);
+    }
+
+    /**
+     * Return if Group start {application_name
+     * @example
+     * {ACAD_REACTORS / {ACAD_XDICTIONARY
+     * @public
+     * @returns {boolean} true/false
+     */
+    isStartOfAppGroup() {
+        return this.isCurrentGroup(102, &apos;^{[A-Za-z]+_[A-Za-z]+$&apos;, (g1, g2) =&gt; g1.code === g2.code &amp;&amp; g2.value.test(g1));
+    }
+
+    /**
+     * Return if Group end
+     * @public
+     * @returns {boolean} true/false
+     */
+    isEndOfAppGroup() {
+        return this.isCurrentGroup(102, &apos;}&apos;);
+    }
+
+    /**
+     * Parse a value to its proper type.
+     * @private
+     * @param {Number} code - dxf group code
+     * @param {String} value - value aginst group code in string
+     * @returns {*} cast a value to its proper type
+     * @throws {TypeError} throw error when str incompatible with the type expected 
+     */
+    __parseGroupValue(code, value) {
+        if (code &lt;= 9) return value;
+        if (code &gt;= 10 &amp;&amp; code &lt;= 59) return parseFloat(value);
+        if (code &gt;= 60 &amp;&amp; code &lt;= 99) return parseInt(value);
+        if (code &gt;= 100 &amp;&amp; code &lt;= 109) return value;
+        if (code &gt;= 110 &amp;&amp; code &lt;= 149) return parseFloat(value);
+        if (code &gt;= 160 &amp;&amp; code &lt;= 179) return parseInt(value);
+        if (code &gt;= 210 &amp;&amp; code &lt;= 239) return parseFloat(value);
+        if (code &gt;= 270 &amp;&amp; code &lt;= 289) return parseInt(value);
+        if (code &gt;= 290 &amp;&amp; code &lt;= 299) return this.parseBool(value);
+        if (code &gt;= 300 &amp;&amp; code &lt;= 369) return value;
+        if (code &gt;= 370 &amp;&amp; code &lt;= 389) return parseInt(value);
+        if (code &gt;= 390 &amp;&amp; code &lt;= 399) return value;
+        if (code &gt;= 400 &amp;&amp; code &lt;= 409) return parseInt(value);
+        if (code &gt;= 410 &amp;&amp; code &lt;= 419) return value;
+        if (code &gt;= 420 &amp;&amp; code &lt;= 429) return parseInt(value);
+        if (code &gt;= 430 &amp;&amp; code &lt;= 439) return value;
+        if (code &gt;= 440 &amp;&amp; code &lt;= 459) return parseInt(value);
+        if (code &gt;= 460 &amp;&amp; code &lt;= 469) return parseFloat(value);
+        if (code &gt;= 470 &amp;&amp; code &lt;= 481) return value;
+        if (code === 999) return value;
+        if (code &gt;= 1000 &amp;&amp; code &lt;= 1009) return value;
+        if (code &gt;= 1010 &amp;&amp; code &lt;= 1059) return parseFloat(value);
+        if (code &gt;= 1060 &amp;&amp; code &lt;= 1071) return parseInt(value);
+
+        console.warn(&apos;WARNING: Group code does not have a defined type: %j&apos;, {
+            code: code,
+            value: value
+        });
+        return value;
+    }
+
+    /**
+     * Parse a boolean according to a 1 or 0 value
+     * @private
+     * @param {String} str - 0 or 1
+     * @returns {boolean} - true if str 1 , false if 0 else throw type error
+     * @throws {TypeError} throw error when str is not 0 or 1
+     */
+    parseBool(str) {
+        if (str === &apos;0&apos;) return false;
+        if (str === &apos;1&apos;) return true;
+        throw TypeError(&apos;String \&apos;&apos; + str + &apos;\&apos; cannot be cast to Boolean type&apos;);
+    }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
