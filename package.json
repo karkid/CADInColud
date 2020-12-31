@@ -16,7 +16,6 @@
     "url": "git+https://KarkiCoder@bitbucket.org/KarkiCoder/cadincloud.git"
   },
   "author": "Dheeraj Karki",
-  "license": "MIT",
   "homepage": "https://bitbucket.org/KarkiCoder/cadincloud#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
