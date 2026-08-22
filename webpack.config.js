@@ -1,5 +1,6 @@
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -11,23 +12,28 @@ module.exports = {
         filename: './js/app.js'
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: 'index.html'
         }),
-        new CopyWebpackPlugin([{
-                from: './css/',
-                to: '../dist/css/'
-            },
-            {
-                from: './assets/media/',
-                to: '../dist/assets/media/'
-            },
-            {
-                from: './assets/fonts/',
-                to: '../dist/assets/fonts/'
-            }
-        ]),
+        new CopyWebpackPlugin({
+            patterns: [{
+                    from: './css/',
+                    to: '../dist/css/'
+                },
+                {
+                    from: './assets/media/',
+                    to: '../dist/assets/media/'
+                },
+                {
+                    from: './assets/fonts/',
+                    to: '../dist/assets/fonts/'
+                }
+            ]
+        }),
+        new webpack.ProvidePlugin({
+            process: 'process/browser',
+        }),
     ],
     module: {
         rules: [{
@@ -37,13 +43,17 @@ module.exports = {
             loader: "babel-loader",
         }]
     },
+    resolve: {
+        fallback: {
+            assert: require.resolve('assert/'),
+            process: require.resolve('process/browser')
+        }
+    },
     devServer: {
-        contentBase: path.resolve(__dirname, './dist/assets/media'),
+        static: path.resolve(__dirname, './dist/assets/media'),
         compress: true,
         port: 12000,
-        stats: 'errors-only',
         open: true,
-        inline: true
     },
     devtool: 'inline-source-map',
 };
