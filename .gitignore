@@ -3,3 +3,5 @@ dist
 *.log*
 lib/test
 lib_build
+docs/ast/
+docs/class/
